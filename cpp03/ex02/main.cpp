@@ -6,11 +6,11 @@
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:13:46 by adgutier          #+#    #+#             */
-/*   Updated: 2024/01/16 12:20:05 by adgutier         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:19:19 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 // int main(void)
 // {
@@ -31,7 +31,7 @@
 
 int main(void)
 {
-    ScavTrap paco("Paco");
+    FragTrap paco("Paco");
 
     int i = 50;
     while(i-- >= 0)
