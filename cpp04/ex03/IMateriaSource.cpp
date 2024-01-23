@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.cpp                                     :+:      :+:    :+:   */
+/*   IMateriaSource.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:42:12 by adgutier          #+#    #+#             */
-/*   Updated: 2024/01/23 10:48:42 by adgutier         ###   ########.fr       */
+/*   Created: 2024/01/23 10:13:38 by adgutier          #+#    #+#             */
+/*   Updated: 2024/01/23 10:27:51 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ICharacter.hpp"
+#include "IMateriaSource.hpp"
 
-ICharacter::ICharacter(void)
+IMateriaSource::IMateriaSource(void)
 {
-    std::cout << "ICharacter created with default constructor" << std::endl;
+    std::cout << "IMateriaSource created with default constructor" << std::endl;
 }
 
-ICharacter::ICharacter(ICharacter const &copy)
+IMateriaSource::IMateriaSource(IMateriaSource const &copy)
 {
-	std::cout << "ICharacter created with copy constructor" << std::endl;
+	std::cout << "IMateriaSource created with copy constructor" << std::endl;
 	*this = copy;
 }
 
-ICharacter	const &ICharacter::operator=(const ICharacter &copy)
+IMateriaSource const	&IMateriaSource::operator=(IMateriaSource const &copy)
 {
 	(void)copy;
-	std::cout << "ICharacter Assignment Operator Called" << std::endl;
+	std::cout << "IMateriaSource Assignment Operator Called" << std::endl;
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:17 by adgutier          #+#    #+#             */
-/*   Updated: 2024/01/18 15:58:52 by adgutier         ###   ########.fr       */
+/*   Updated: 2024/01/23 10:27:35 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ class Character: public ICharacter
         std::string const	&getName(void) const;
 		void				setName(std::string const &name);
         
-        virtual void equip(AMateria* m) = 0;
-        virtual void unequip(int idx) = 0;
-        virtual void use(int idx, Character& target) = 0;
+        virtual void equip(AMateria* m);
+        virtual void unequip(int idx);
+        virtual void	use(int idx, ICharacter &target);
+        int exist(AMateria *m);
         
 };
+
