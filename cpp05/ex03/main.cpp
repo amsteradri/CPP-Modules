@@ -6,7 +6,7 @@
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:22:22 by adgutier          #+#    #+#             */
-/*   Updated: 2024/02/27 12:55:19 by adgutier         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:01:05 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int main(void)
 {
 	Intern		bob;
-	Form		*form;
+	AForm		*form;
 	Bureaucrat	karen("Karen", 50);
 
 	// Test how all forms are created properly execpt for the last one
