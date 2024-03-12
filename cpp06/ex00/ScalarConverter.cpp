@@ -26,8 +26,6 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 	return *this;
 }
 
-
-
 void ScalarConverter::convertToChar(const std::string& literal)
 {
     errno = 0;

@@ -15,7 +15,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <cstdlib> // Para usar atof y atoi
+#include <cstdlib>
 #include <iomanip> 
 
 class ScalarConverter {
