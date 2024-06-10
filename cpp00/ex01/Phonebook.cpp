@@ -6,12 +6,18 @@
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:28:25 by adgutier          #+#    #+#             */
-/*   Updated: 2024/01/09 12:43:05 by adgutier         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:53:49 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include "Contact.hpp"
+#include <iostream>
+#include <iomanip>
+#define COLUMN_SIZE 10
+
+
+#define COLUMN_SIZE 10
 
 Phonebook::Phonebook(void)
 {
@@ -86,55 +92,38 @@ void Phonebook::print(Contact contact)
     
 }
 
-std::string	add_spaces(int n)
-{
-	std::string	str;
-
-	while (n--)
-		str.append(" ");
-	return (str);
+static std::string  cutter(std::string str) {
+    if (str.length() <= COLUMN_SIZE)
+        return str;
+    return str.substr(0, COLUMN_SIZE - 1) + ".";
 }
 
-std::string	fix_width(std::string str, long unsigned max)
+int search_ui(Contact contacts[8])
 {
-	if (str.size() > max)
-	{
-		str.resize(max);
-		str[str.size() - 1] = '.';
-	}
-	return (str);
+    int contact_count = 0;
+
+    std::cout << " ___________________________________________ " << std::endl;
+    std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
+    std::cout << "|----------|----------|----------|----------|" << std::endl;
+
+    for (int i = 0; i < 8; i++)
+    {
+        if (!contacts[i].get_name().empty())
+        {
+            contact_count++;
+            std::cout << "|"
+                      << std::setw(COLUMN_SIZE) << i + 1 << "|"
+                      << std::setw(COLUMN_SIZE) << cutter(contacts[i].get_name()) << "|"
+                      << std::setw(COLUMN_SIZE) << cutter(contacts[i].get_scname()) << "|"
+                      << std::setw(COLUMN_SIZE) << cutter(contacts[i].get_nick()) << "|"
+                      << std::endl;
+        }
+    }
+    std::cout << " ------------------------------------------- " << std::endl;
+    return contact_count;
 }
 
-int	search_ui(Contact contacts[8])
-{
-	char		c;
-	int			i;
-	std::string	str;
 
-	std::cout << " ___________________________________________ " << std::endl;
-	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
-	std::cout << "|----------|----------|----------|----------|" << std::endl;
-	c = '0';
-	i = 0;
-	while (++c <= '8')
-	{
-		if (contacts[c - 1 - '0'].get_name().size() && ++i)
-		{
-			str = c;
-			str = fix_width(str, 10);
-			std::cout << "|" << add_spaces(10 - str.size()) << str;
-			str = fix_width(contacts[c - 1  - '0'].get_name(), 10);
-			std::cout << "|" << add_spaces(10 - str.size()) << str;
-			str = fix_width(contacts[c - 1 - '0'].get_scname(), 10);
-			std::cout << "|" << add_spaces(10 - str.size()) << str;
-			str = fix_width(contacts[c - 1 - '0'].get_nick(), 10);
-			std::cout << "|" << add_spaces(10 - str.size()) << str;
-			std::cout << "|" << std::endl;
-		}
-	}
-	std::cout << " ------------------------------------------- " << std::endl;
-	return (i);
-}
 
 Contact	Phonebook::get_contact(int index)
 {
@@ -145,26 +134,26 @@ void Phonebook::search(void)
 {
     std::string str;
 
-    if(!search_ui(this->_contacts))
+    if (!search_ui(this->_contacts))
     {
-        std::cout << "Phonebook is empty"<< std::endl;
-        return ;
+        std::cout << "Phonebook is empty" << std::endl;
+        return;
     }
-    while(!std::cin.eof())
+    while (!std::cin.eof())
     {
         std::cout << "Introduce a contact index: " << std::endl;
-        
-        if(std::getline(std::cin, str) && str != "")
+
+        if (std::getline(std::cin, str) && !str.empty())
         {
-            if(str.size() == 1 && (str[0] >= '1' && str[0] <= '8') && this->_contacts[str[0] - 1 - '0'].get_name().size())
+            if (str.size() == 1 && (str[0] >= '1' && str[0] <= '8') && !this->_contacts[str[0] - 1 - '0'].get_name().empty())
                 break;
         }
-        if(str != "")
+        if (!str.empty())
         {
-            std::cout << "Wrong conatct index." << std::endl;
+            std::cout << "Wrong contact index." << std::endl;
         }
     }
-    if(!std::cin.eof())
+    if (!std::cin.eof())
         this->print(this->_contacts[str[0] - 1 - '0']);
-    
 }
+
