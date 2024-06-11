@@ -46,14 +46,14 @@ int main(int argc, char **argv)
     std::string s1 = argv[2];
     std::string s2 = argv[3];
 
-    std::ifstream infile(file);
+    std::ifstream infile(file.c_str());
     if(!infile)
     {
         std::cerr << "Could not open file" << file << std::endl;
         return(1);
     }
 
-    std::ofstream outfile(file + ".replace");
+    std::ofstream outfile((file + ".replace").c_str());
     if(!outfile)
     {
         std::cerr << "Could not create file" << file << std::endl;

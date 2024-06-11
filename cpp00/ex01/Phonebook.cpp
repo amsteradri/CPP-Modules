@@ -17,8 +17,6 @@
 #define COLUMN_SIZE 10
 
 
-#define COLUMN_SIZE 10
-
 Phonebook::Phonebook(void)
 {
     this->_index = 0;

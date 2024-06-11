@@ -12,33 +12,29 @@
 
 #include "Harl.hpp"
 
-void filter(char *mode, Harl& harl)
+void filter(const std::string &mode, Harl& harl)
 {
-    int level;
-    std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    int level = -1;
+    std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     
-    level = 0;
-    if(mode == levels[0])
-        level = 1;
-    else if(mode == levels[1])
-        level = 2;
-    else if(mode == levels[2])
-        level = 3;
-    else if(mode == levels[3])
-        level = 4;
-    
+    for (int i = 0; i < 4; ++i) {
+        if (mode == levels[i]) {
+            level = i;
+            break;
+        }
+    }
+
     switch (level)
     {
-        case 1:
+        case 0:
             harl.complain("DEBUG");
-        case 2:
+        case 1:
             harl.complain("INFO");
-        case 3:
+        case 2:
             harl.complain("WARNING");
-        case 4:
+        case 3:
             harl.complain("ERROR");
             break;
-    
         default:
             std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
     }
@@ -47,10 +43,14 @@ void filter(char *mode, Harl& harl)
 int main(int argc, char **argv)
 {
     Harl harl;
-    if(argc == 2)
+    if (argc == 2)
     {
-        filter(argv[1], harl);
+        std::string mode = argv[1];
+        filter(mode, harl);
     }
     else
+    {
         std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+    }
+    return 0;
 }

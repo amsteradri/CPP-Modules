@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp zombieHorde.cpp
+SRC = main.cpp Zombie.cpp zombieHorde.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = g++
 RM = rm -f
