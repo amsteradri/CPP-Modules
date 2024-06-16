@@ -6,7 +6,7 @@
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:28:12 by adgutier          #+#    #+#             */
-/*   Updated: 2024/01/11 10:52:19 by adgutier         ###   ########.fr       */
+/*   Updated: 2024/06/16 11:34:22 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,18 @@ void Harl::error(void)
     std::cout << "\033[31m" << "ENTERING ERROR MODE" << "\033[0m" << std::endl;
 }
 
-void Harl::complain( std::string level )
+void Harl::complain(std::string level) 
 {
-    void (Harl::*ptr_debug)(void) = &Harl::debug;
-    void (Harl::*ptr_info)(void) = &Harl::info;
-    void (Harl::*ptr_warning)(void) = &Harl::warning;
-    void (Harl::*ptr_error)(void) = &Harl::error;
-    if(!level.size())
+    void (Harl::*complainPtr[])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    
+    for (int i = 0; i < 4; ++i)
     {
-        std::cout << "No mode specified!" << std::endl;
+        if (level == levels[i])
+        {
+            (this->*complainPtr[i])();
+            return;
+        }
     }
-    if(level == "DEBUG")
-        (this->*ptr_debug)();
-    else if(level == "INFO")
-        (this->*ptr_info)();
-    else if(level == "WARNING")
-        (this->*ptr_warning)();
-    else if(level == "ERROR")
-        (this->*ptr_error)();
+    std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }

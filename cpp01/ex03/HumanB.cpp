@@ -6,7 +6,7 @@
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:38:29 by adgutier          #+#    #+#             */
-/*   Updated: 2024/01/09 14:52:59 by adgutier         ###   ########.fr       */
+/*   Updated: 2024/06/16 11:26:00 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ HumanB::~HumanB(void)
 	std::cout << "HumanB " << this->_name << " destroyed" << std::endl;
 }
 
-void	HumanB::attack(void)
+void HumanB::attack(void)
 {
-	std::cout << this->_name << " attacks with his " << \
-		this->_weapon->getType() << std::endl;
+    if (!this->_weapon)
+		std::cout << this->_name << " has no weapon" << std::endl;
+    else
+        std::cout << this->_name << " attacks with his " << this->_weapon->getType() << std::endl;
 }
 
 void	HumanB::setWeapon(Weapon &weapon)
