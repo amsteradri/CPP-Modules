@@ -6,14 +6,11 @@
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:45:50 by adgutier          #+#    #+#             */
-/*   Updated: 2024/06/16 11:39:24 by adgutier         ###   ########.fr       */
+/*   Updated: 2024/06/16 11:42:55 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-
-#include "Harl.hpp"
-#include <string>
 
 void filter(const std::string &mode, Harl& harl)
 {
