@@ -6,22 +6,37 @@
 /*   By: adgutier <adgutier@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:49:28 by adgutier          #+#    #+#             */
-/*   Updated: 2024/01/11 13:03:22 by adgutier         ###   ########.fr       */
+/*   Updated: 2024/06/17 18:51:07 by adgutier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void ) 
+int main( void )
 {
-Fixed a;
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-std::cout << a << std::endl;
-std::cout << ++a << std::endl;
-std::cout << a << std::endl;
-std::cout << a++ << std::endl;
-std::cout << a << std::endl;
-std::cout << b << std::endl;
-std::cout << Fixed::max( a, b ) << std::endl;
-return 0;
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+
+	std::cout << "a: " << a << std::endl;
+	std::cout << "++a: " << ++a << std::endl;
+	std::cout << "a: " << a << std::endl;
+	std::cout << "a++: " << a++ << std::endl;
+	std::cout << "a: " << a << std::endl;
+	std::cout << "b: " << b << std::endl;
+	std::cout << "max: " << Fixed::max( a, b ) << std::endl;
+	std::cout << "min: " << Fixed::min( a, b ) << std::endl;
+
+	Fixed d(8);
+	Fixed c(2);
+	std::cout << "d/c: " << d/c << std::endl;
+	std::cout << "d*c: " << d*c << std::endl;
+	std::cout << "d+c: " << d+c << std::endl;
+	std::cout << "d-c: " << d-c << std::endl;
+	
+	if (a != c)
+		std::cout << "a != c " << std::endl;
+	if (!(a == c))
+		std::cout << "!(a == c) " << std::endl;
+	
+	return 0;
 }
