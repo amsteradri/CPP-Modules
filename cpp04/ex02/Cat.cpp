@@ -31,8 +31,9 @@ Cat::~Cat(void)
 
 Cat::Cat(Cat const &copy): Animal(copy)
 {
-	std::cout << "Cat from Animal " << this->type << " created with copy constructor" << std::endl;
-	*this = copy;
+	this->_brain = new Brain(*copy._brain);
+	std::cout << "Cat from Animal " << Animal::type << " created with copy constructor" << std::endl;
+
 }
 
 Cat &Cat::operator=(const Cat &other)
