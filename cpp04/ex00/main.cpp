@@ -18,7 +18,7 @@
 int	main(void)
 {
 	const Animal		*meta = new Animal();
-	const Animal		*j = new Dog("Carnivore");
+	const Animal		*j = new Dog("PERRITO");
 	const Animal		*i = new Cat("GATITO");
 	const WrongAnimal	*k = new WrongCat();
 
@@ -31,3 +31,19 @@ int	main(void)
 	delete j;
 	delete k;
 }
+
+
+// int main() {
+//     Animal* animalPtr;
+//     Dog dog;
+//     Cat cat;
+
+//     // Polimorfismo en acción
+//     animalPtr = &dog;
+//     animalPtr->makeSound(); // Salida: Bark
+
+//     animalPtr = &cat;
+//     animalPtr->makeSound(); // Salida: Meow
+
+//     return 0;
+// }

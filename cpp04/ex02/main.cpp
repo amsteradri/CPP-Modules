@@ -23,14 +23,20 @@
 
 int main()
 {
-	// const Animal* j = new Dog();
-	// const Animal* i = new Cat();
-	// delete j;//should not create a leak
-	// delete i;
-	//Animal animal3;
-	const Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
-		for ( int i = 0; i < 4; i++ ) {
-			delete animals[i];
-		}
-	return 0;
+	// Esto dará error de compilación:
+	// Animal animal;
+
+	// Esto dará también error:
+	// Animal *animal = new Animal();
+
+	// Dan error ya que estamos instanciando una clase abstracta, tiene un método puro virtual
+	// (no tiene implementación propia) y no se puede instanciar directamente.
+
+	// Lo que si podemos hacer ahora es instanciar a sus clases derivadas que si tienen implementación:
+	Animal *dog = new Dog();
+	Animal *cat = new Cat();
+
+	dog->makeSound();
+	cat->makeSound();
+	return (0);
 }

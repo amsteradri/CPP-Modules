@@ -16,10 +16,6 @@
 
 class ICharacter
 {
-    protected:
-        ICharacter(void);
-        ICharacter(ICharacter const &copy);
-        ICharacter	const &operator=(const ICharacter &copy);
     public:
     virtual ~ICharacter() {}
     virtual std::string const & getName() const = 0;

@@ -23,7 +23,7 @@ class Brain
                 Brain(Brain const &copy);
                 virtual ~Brain(void);
                 Brain &operator=(const Brain &copy);
-                std::string const	&getIdea(int const &idea) const;
+                void getIdea() const;
                 void	setIdea(std::string const &idea, int const &index);
         
   

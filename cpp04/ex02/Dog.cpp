@@ -31,10 +31,18 @@ Dog::Dog(Dog const &copy): Animal(copy)
 
 }
 
-Dog	&Dog::operator=(const Dog &copy)
+Dog &Dog::operator=(const Dog &other)
 {
-	std::cout << "Assignment operator for Dog from Animal " << std::endl;
-	Animal::operator=(copy);
+	if (this != &other)
+	{
+		Animal::operator=(other);
+		// Creamos un nuevo cerebro y eliminamos el anterior para evitar copias superficiales
+		Brain *newBrain = new Brain(*other._brain);
+		delete this->_brain;
+		this->_brain = newBrain;
+	}
+	std::cout << "Dog type: " << this->type << " = "
+			  << "Dog type: " << other.type << std::endl;
 	return (*this);
 }
 
@@ -51,4 +59,14 @@ void	Dog::setBrain(Brain const &brain)
 void	Dog::makeSound(void) const
 {
 	std::cout << "Dog From Animal " << Animal::type << " does WOUF WOUF" << std::endl;
+}
+
+void Dog::changeIdea(const std::string &newIdea, int index)
+{
+	this->_brain->setIdea(newIdea, index);
+}
+
+void Dog::printBrain() const
+{
+	this->_brain->getIdea();
 }

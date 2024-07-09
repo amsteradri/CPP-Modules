@@ -31,10 +31,13 @@ class Cat: public Animal
             Brain &getBrain(void) const;
             void	setBrain(Brain const &brain);
             void	makeSound(void) const;
+            void changeIdea(const std::string &newIdea, int index);
+	        void printBrain() const;
             
 
 
 };
+
 
 
 

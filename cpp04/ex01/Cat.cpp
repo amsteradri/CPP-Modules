@@ -35,10 +35,17 @@ Cat::Cat(Cat const &copy): Animal(copy)
 	*this = copy;
 }
 
-Cat	&Cat::operator=(const Cat &copy)
+Cat &Cat::operator=(const Cat &other)
 {
-	std::cout << "Assignment operator for Cat called." << std::endl;
-	this->type = copy.getType();
+	if (this != &other)
+	{
+		Animal::operator=(other);
+		Brain *newBrain = new Brain(*other._brain);
+		delete this->_brain;
+		this->_brain = newBrain;
+	}
+	std::cout << "Cat type: " << this->type << " = "
+			  << "Cat type: " << other.type << std::endl;
 	return (*this);
 }
 
@@ -55,4 +62,14 @@ void	Cat::setBrain(Brain const &brain)
 void	Cat::makeSound(void) const
 {
 	std::cout << "Cat From Animal " << Animal::type << " does MIAU MIAU" << std::endl;
+}
+
+void Cat::changeIdea(const std::string &newIdea, int index)
+{
+	this->_brain->setIdea(newIdea, index);
+}
+
+void Cat::printBrain() const
+{
+	this->_brain->getIdea();
 }

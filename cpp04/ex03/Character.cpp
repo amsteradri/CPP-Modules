@@ -32,17 +32,20 @@ Character::~Character(void)
     std::cout << "Character destroyed succesfully" << std::endl;
 }
 
-Character::Character(Character const &copy): ICharacter(copy), _materias()
+Character::Character(Character const &copy) : _name(copy._name) 
 {
-    this->_name = copy._name;
-	for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; ++i) {
+        _materias[i] = NULL;
+    }
+    for (int i = 0; i < 4; ++i) 
 	{
-		if (copy._materias[i])
-			this->_materias[i] = copy._materias[i];
-	}
-	std::cout << "Character created with copy constructor" << std::endl;
+        if (copy._materias[i]) 
+		{
+            _materias[i] = copy._materias[i]->clone();
+        }
+    }
+    std::cout << "Character created with copy constructor" << std::endl;
 }
-
 Character	const &Character::operator=(const Character &copy)
 {
 	this->_name = copy._name;
