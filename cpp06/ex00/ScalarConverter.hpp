@@ -17,6 +17,9 @@
 #include <string>
 #include <cstdlib>
 #include <iomanip> 
+#include <cerrno>
+#include <limits>
+
 
 class ScalarConverter {
 
