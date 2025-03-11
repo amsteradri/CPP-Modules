@@ -13,6 +13,12 @@
 #include "ScalarConverter.hpp"
 
 
+// Función	Conversión	Método usado	Manejo de errores
+// convertToChar	string → char	strtol()	Valores fuera de rango, caracteres no imprimibles
+// convertToInt	string → int	strtol()	Valores fuera de rango
+// convertToFloat	string → float	atof()	NaN, inf, precisión .0f
+// convertToDouble	string → double	atof()	NaN, inf, precisión .0
+
 ScalarConverter::ScalarConverter(const std::string& str) : _str(str) {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter& other) : _str(other._str) {}
