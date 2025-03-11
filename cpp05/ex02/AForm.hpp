@@ -34,7 +34,7 @@ public:
 		bool const			&getIsSigned(void) const;
 		int const			&getSignGrade(void) const;
 		int const			&getExecGrade(void) const;
-        void			execute(Bureaucrat const &executor) const;
+        virtual void			execute(Bureaucrat const &executor) const;
         void	beSigned(Bureaucrat &bureaucrat);
         virtual void	beExecuted(Bureaucrat const &bureaucrat) const = 0;
     // Exception classes for grade too high and too low
