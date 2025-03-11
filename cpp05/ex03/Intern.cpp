@@ -29,13 +29,41 @@ Intern const	&Intern::operator=(const Intern &copy)
 
 AForm	*Intern::makeForm(const std::string &type, const std::string &target)
 {
-	AForm	*form;
+	AForm *form = NULL;
 
-	form = AForm::makeForm(type, target);
-	if (!form)
-		throw (AForm::InvalidFormException());
-	else
-		std::cout << "Intern creates form: " << form->getName() << " with target: " << form->getTarget() << std::endl;
-	return (form);
+	// Array con los nombres de los formularios
+	std::string formTypes[3] = {
+		"robotomy request",
+		"shrubbery creation",
+		"presidential pardon"
+	};
+
+	// Array con los formularios correspondientes
+	AForm *forms[3] = {
+		new RobotomyRequestForm(target),
+		new ShrubberyCreationForm(target),
+		new PresidentialPardonForm(target)
+	};
+
+	for (int i = 0; i < 3; i++)
+	{
+		if (type == formTypes[i])
+		{
+			form = forms[i];
+			std::cout << "Intern creates " << form->getName() << " targeting " << target << std::endl;
+			// Eliminar las otras instancias creadas para evitar fugas de memoria
+			for (int j = 0; j < 3; j++)
+			{
+				if (j != i)
+					delete forms[j];
+			}
+			return form;
+		}
+	}
+
+	// Si no se encontró el formulario, eliminar las instancias creadas y lanzar excepción
+	for (int i = 0; i < 3; i++)
+		delete forms[i];
+
+	throw std::invalid_argument("Invalid form type: " + type);
 }
-
