@@ -29,7 +29,7 @@ int main( void )
     std::cout << "longestSpan: " << sp.longestSpan() << std::endl;
     std::cout << "shortestSpan: " << sp.shortestSpan() << std::endl;
 
-    std::cout << "\n---- TEST #1 -----" << std::endl;
+    std::cout << "\n---- TEST #2 -----" << std::endl;
 
     try {
         std::list<int>    l( 10000 );
