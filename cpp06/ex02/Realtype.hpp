@@ -4,7 +4,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <cstdlib>
+#include <cstdlib>  // Para rand() y srand()
+#include <ctime>    // Para time()
 #include <iomanip> 
 
 class Base{

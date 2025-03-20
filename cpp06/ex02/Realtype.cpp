@@ -47,32 +47,45 @@ void    identify( Base& p )
 
 int     main( void )
 {
-    Base*   a = generate();
-    Base*   b = generate();
-    Base*   c = generate();
-    Base*   d = generate();
+    {
+        Base*   a = generate();
+        Base*   b = generate();
+        Base*   c = generate();
+        Base*   d = generate();
 
-    std::cout << "/* **************************************** */" << std::endl;
+        std::cout << "/* **************************************** */" << std::endl;
 
-    std::cout << "a* = "; identify( a );
-    std::cout << "a& = "; identify( *a ); std::cout << std::endl;
+        std::cout << "a* = "; identify( a );
+        std::cout << "a& = "; identify( *a ); std::cout << std::endl;
 
-    std::cout << "b* = "; identify( b );
-    std::cout << "b& = "; identify( *b ); std::cout << std::endl;
+        std::cout << "b* = "; identify( b );
+        std::cout << "b& = "; identify( *b ); std::cout << std::endl;
 
-    std::cout << "c* = "; identify( c );
-    std::cout << "c& = "; identify( *c ); std::cout << std::endl;
+        std::cout << "c* = "; identify( c );
+        std::cout << "c& = "; identify( *c ); std::cout << std::endl;
 
-    std::cout << "d* = "; identify( d );
-    std::cout << "d& = "; identify( *d ); std::cout << std::endl;
+        std::cout << "d* = "; identify( d );
+        std::cout << "d& = "; identify( *d ); std::cout << std::endl;
 
-    std::cout << "/* ***************************************** */" << std::endl;
+        std::cout << "/* ***************************************** */" << std::endl;
 
 
-    delete a;
-    delete b;
-    delete c;
-    delete d;
+        delete a;
+        delete b;
+        delete c;
+        delete d;
 
-    return (0);
+    }
+    {
+         std::srand(static_cast<unsigned>(std::time(NULL))); // Inicializar la semilla una sola vez
+
+        Base* obj = generate();
+        if (dynamic_cast<A*>(obj)) std::cout << "Generated: A" << std::endl;
+        else if (dynamic_cast<B*>(obj)) std::cout << "Generated: B" << std::endl;
+        else if (dynamic_cast<C*>(obj)) std::cout << "Generated: C" << std::endl;
+
+        delete obj; // Liberar memoria
+        return 0;
+    }
+    return 0;
 }

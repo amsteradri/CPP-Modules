@@ -45,6 +45,7 @@ int main(void)
 	delete form;
 	std::cout << "------------------------------------" << std::endl;
 	form = bob.makeForm("presidential pardon", "Georgia");
+	std::cout << *form << std::endl;
 	karen.signForm(*form);
 	karen.executeForm(*form);
 	delete form;

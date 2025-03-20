@@ -24,8 +24,8 @@ int main( void )
     std::cout << "min( a, b ) = " << min( a, b ) << std::endl;
     std::cout << "max( a, b ) = " << max( a, b ) << std::endl;
 
-    std::string c = "chaine1";
-    std::string d = "chaine2";
+    std::string c = "chain1";
+    std::string d = "chain2";
 
     swap(c, d);
     std::cout << "c = " << c << ", d = " << d << std::endl;
