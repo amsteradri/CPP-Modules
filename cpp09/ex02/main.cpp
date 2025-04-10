@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 
 		// Para de medir el tiempo y muestra los resultados calculados
 		gettimeofday(&endVector, 0);
-		pmmVector.printSorts(vector, sortedVector);
+		pmmVector.printSortednums(vector, sortedVector);
 		pmmVector.printTimes(beginVector, endVector, vector.size(), "std::vector");
 
 		/* STD::DEQUE */

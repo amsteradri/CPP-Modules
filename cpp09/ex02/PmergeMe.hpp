@@ -24,7 +24,7 @@ public:
 	static Container parseArgs(int argc, char **argv);
 
 	template <typename Container>
-	int binarySearch(const Container &S, int T);
+	int findPerfectPos(const Container &S, int T);
 
 	template <typename PairContainer>
 	void insertPair(const typename PairContainer::value_type &element, PairContainer &sortedPairs);
@@ -36,7 +36,7 @@ public:
 	Container fordJohnsonSort(Container &numbers);
 
 	template <typename Container>
-	void printSorts(const Container &numbers, const Container &sortedNumbers);
+	void printSortednums(const Container &numbers, const Container &sortedNumbers);
 
 	void printTimes(const struct timeval &begin, const struct timeval &end, size_t size, const std::string &containerType);
 
@@ -67,23 +67,23 @@ Container PmergeMe::parseArgs(int argc, char **argv)
 }
 
 template <typename Container>
-int PmergeMe::binarySearch(const Container &S, int T)
+int PmergeMe::findPerfectPos(const Container &S, int T)
 {
-	int left = 0;
-	int right = S.size() - 1;
-	int middle;
+	int init = 0;
+	int end = S.size() - 1;
+	int pos;
 
-	while (left <= right)
+	while (init <= end)
 	{
-		middle = left + (right - left) / 2;
-		if (S[middle] == T)
-			return middle;
-		else if (S[middle] < T)
-			left = middle + 1;
+		pos = init + (end - init) / 2;
+		if (S[pos] == T)
+			return pos;
+		else if (S[pos] < T)
+			init = pos + 1;
 		else
-			right = middle - 1;
+			end = pos - 1;
 	}
-	return (left); // Devuelve la posición donde se debe insertar el elemento
+	return (init); // Devuelve la posición donde se debe insertar el elemento
 }
 
 /* Definición de las funciones template porque el ejercicio no indica que podamos subir archivo PmergeMe.tpp */
@@ -149,14 +149,14 @@ Container PmergeMe::fordJohnsonSort(Container &numbers)
 		Xnopairs.push_back(X[i].first);
 	for (size_t i = 0; i < Xnopairs.size(); ++i)
 	{
-		int insertPos = binarySearch(S, Xnopairs[i]);
+		int insertPos = findPerfectPos(S, Xnopairs[i]);
 		S.insert(S.begin() + insertPos, Xnopairs[i]);
 	}
 
 	// Inserción del último elemento individual, si existe
 	if (lastSingle != -1)
 	{
-		int insertPos = binarySearch(S, lastSingle);
+		int insertPos = findPerfectPos(S, lastSingle);
 		S.insert(S.begin() + insertPos, lastSingle);
 	}
 
@@ -164,7 +164,7 @@ Container PmergeMe::fordJohnsonSort(Container &numbers)
 }
 
 template <typename Container>
-void PmergeMe::printSorts(const Container &numbers, const Container &sortedNumbers)
+void PmergeMe::printSortednums(const Container &numbers, const Container &sortedNumbers)
 {
 	std::cout << "Before: ";
 	for (size_t i = 0; i < numbers.size(); ++i)
